@@ -91,7 +91,8 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+#html_theme = 'default'
+html_theme = 'jinja'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -99,7 +100,7 @@ html_theme = 'default'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = ['_themes']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -132,6 +133,12 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 #html_sidebars = {}
+html_sidebars = {
+    'index':    ['sidebarlogo.html', 'sidebarintro.html', 'sourcelink.html',
+                 'searchbox.html'],
+    '**':       ['sidebarlogo.html', 'localtoc.html', 'relations.html',
+                 'sourcelink.html', 'searchbox.html']
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -172,6 +179,7 @@ htmlhelp_basename = 'Auradoc'
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
+'papersize': 'a4',
 
 # The font size ('10pt', '11pt' or '12pt').
 #'pointsize': '10pt',
@@ -187,6 +195,19 @@ latex_documents = [
    u'Aura Team', 'manual'),
 ]
 
+# Additional stuff for LaTeX
+latex_elements = {
+    'fontpkg':      r'\usepackage{mathpazo}',
+    'papersize':    'a4paper',
+    'pointsize':    '12pt',
+    'preamble':     r'''
+\usepackage{jinjastyle}
+
+% i hate you latex
+\DeclareUnicodeCharacter{14D}{o}
+'''
+}
+
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 #latex_logo = None
@@ -194,6 +215,7 @@ latex_documents = [
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
 #latex_use_parts = False
+latex_use_parts = True
 
 # If true, show page references after internal links.
 #latex_show_pagerefs = False
@@ -203,9 +225,11 @@ latex_documents = [
 
 # Documents to append as an appendix to all manuals.
 #latex_appendices = []
+latex_additional_files = ['jinjastyle.sty', 'logo.pdf']
 
 # If false, no module index is generated.
 #latex_domain_indices = True
+latex_domain_indices = False
 
 
 # -- Options for manual page output --------------------------------------------
