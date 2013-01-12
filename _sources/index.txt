@@ -9,15 +9,23 @@ The framework itself is constructed and tested with tools many front end
 developers find familiar. Aura has source code, a unit test suite and
 demos you may view.
 
+Fresh front-end programmers can study the concepts of Aura and
+implementation of libraries to build applications and learn tools like
+AMD, grunt, unit tests in the process.
+
+Intermediate programmers can use the skills they already have with making
+AMD modules and apply the libraries of their choice.
+
 You can see the latest developments at the `Aura Github Page`_ or jump
 right in and :doc:`build_an_app`.
 
 **Features:**
 
-- abstraction of widgets into reusable modules using `AMD`_ format.
+- hit the ground running quickly widgets into reusable modules using the
+  `AMD`_ format.
 - abstraction of vendor library's such as `jQuery`_, `Ender`_ and
   `Zepto`_.
-- uses familiar tools inside such as `grunt`_ for develpment
+- relies on familiar tools inside such as `grunt`_ for develpment
   dependencies and `Bower`_ for browser libraries.
 - unit tests in `Mocha`_ and `PhantomJS`_.
 - third-party support for `Yeoman`_.
