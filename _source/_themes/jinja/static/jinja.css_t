@@ -10,8 +10,8 @@
 
 {% set page_width = '940px' %}
 {% set sidebar_width = '220px' %}
-{% set font_family = 'Georgia, serif' %}
-{% set header_font_family = 'Crimson Text, ' ~ font_family %}
+{% set font_family = '"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif' %}
+{% set header_font_family = '' ~ font_family %}
  
 @import url("basic.css");
  
@@ -59,16 +59,26 @@ img.floatingflask {
     float: right;
 }
  
-div.footer {
+/*div.footer {
     width: {{ page_width }};
     margin: 20px auto 30px auto;
     font-size: 14px;
     color: #888;
     text-align: right;
+}*/
+
+div.footer {
+    padding: 60px;
+    -webkit-box-shadow: inset 0 1px 8px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0 1px 8px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1px 8px rgba(0,0,0,0.2);
+    background: #f1f1f1;
+    color: #888888;
+    font-size: 14px;
 }
 
 div.footer a {
-    color: #888;
+    color: #666;
 }
 
 div.related {

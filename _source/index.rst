@@ -18,7 +18,7 @@ demos you may view. In addition you may see te latest developments at the
 - uses familiar tools inside such as `grunt`_ for develpment
   dependencies and `Bower`_ for browser libraries.
 - unit tests in `Mocha`_ and `PhantomJS`_.
-- third-party support for `yeoman`_.
+- third-party support for `Yeoman`_.
 
 The project is based on concepts discussed by Nicholas Zakas in `Scalable
 Application Architecture`_ and by Addy in `Large-scale Application Development`_.
@@ -37,4 +37,4 @@ Application Architecture`_ and by Addy in `Large-scale Application Development`_
 .. _Bower: http://twitter.github.com/bower/
 .. _Mocha: http://visionmedia.github.com/mocha/
 .. _PhantomJS: http://phantomjs.org/
-.. _yeoman: http://yeoman.io/
+.. _Yeoman: http://yeoman.io/

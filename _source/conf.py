@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Aura'
-copyright = u'2013, Aura Team'
+copyright = u'2013, Addy Osmani'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
