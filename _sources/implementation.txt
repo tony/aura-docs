@@ -1,6 +1,13 @@
 Implementation
 ==============
 
+.. todo::
+1. Abstraction - implemented using extensions, passable into apps
+    a. utilities (_, lodash)
+    b. dom (jQuery, ender, etc)
+    c. mvc (backbone, marionette)
+
+
 Application Core
 ----------------
 

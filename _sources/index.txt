@@ -7,8 +7,10 @@ practices for developing maintainable applications.
 
 The framework itself is constructed and tested with tools many front end
 developers find familiar. Aura has source code, a unit test suite and
-demos you may view. In addition you may see te latest developments at the
-`Aura Github Page`_.
+demos you may view.
+
+You can see the latest developments at the `Aura Github Page`_ or jump
+right in and :doc:`build_an_app`.
 
 **Features:**
 
