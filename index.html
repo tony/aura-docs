@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Aura Dev documentation" href="#" />
-    <link rel="next" title="Intro" href="intro.html" /> 
+    <link rel="next" title="Architectural Philosophy" href="philosophy.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="intro.html" title="Intro"
+          <a href="philosophy.html" title="Architectural Philosophy"
              accesskey="N">next</a> |</li>
         <li><a href="#">Aura Dev documentation</a> &raquo;</li> 
       </ul>
@@ -63,7 +63,7 @@ demos you may view. In addition you may see te latest developments at the
 <li>uses familiar tools inside such as <a class="reference external" href="http://gruntjs.com/">grunt</a> for develpment
 dependencies and <a class="reference external" href="http://twitter.github.com/bower/">Bower</a> for browser libraries.</li>
 <li>unit tests in <a class="reference external" href="http://visionmedia.github.com/mocha/">Mocha</a> and <a class="reference external" href="http://phantomjs.org/">PhantomJS</a>.</li>
-<li>third-party support for <a class="reference external" href="http://yeoman.io/">yeoman</a>.</li>
+<li>third-party support for <a class="reference external" href="http://yeoman.io/">Yeoman</a>.</li>
 </ul>
 <p>The project is based on concepts discussed by Nicholas Zakas in <a class="reference external" href="http://www.slideshare.net/nzakas/scalable-javascript-application-architecture">Scalable
 Application Architecture</a> and by Addy in <a class="reference external" href="http://addyosmani.com/largescalejavascript/">Large-scale Application Development</a>.</p>
@@ -71,12 +71,17 @@ Application Architecture</a> and by Addy in <a class="reference external" href="
 <h2>Aura Documentation<a class="headerlink" href="#aura-documentation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#application-core">Application Core</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#sandbox">Sandbox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#modules">Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#widgets">Widgets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#sample-application">Sample Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Architectural Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html#mediator-pattern">Mediator Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html#facade-pattern">Facade Pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="implementation.html">Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#application-core">Application Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#sandbox">Sandbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#modules">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#widgets">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html#sample-application">Sample Application</a></li>
 </ul>
 </li>
 </ul>
@@ -85,7 +90,8 @@ Application Architecture</a> and by Addy in <a class="reference external" href="
 <div class="section" id="additional-information">
 <h2>Additional Information<a class="headerlink" href="#additional-information" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 </div>
 <p>If you can&#8217;t find the information you&#8217;re looking for, have a look at the
@@ -149,8 +155,12 @@ index or try to find it using the search function:</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy; Copyright 2013, Aura Team.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+      <p>&copy; Copyright 2013, Addy Osmani.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>. Logo by <a href="http://hull.io">hull.io</a>.
+      </p>
+      <p>
+        <strong>Aura is the work of :</strong> Addy Osmani, Dustin Boston, Gerson Goulart, Tony Narlock, Sindre Sorhus, Peter Rudolfsen, Robert Djurasaj, Joel Hooks, Dan Lynch
+      </p>
     </div>
   </body>
 </html>

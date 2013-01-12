@@ -1,0 +1,192 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Implementation &mdash; Aura Dev documentation</title>
+    
+    <link rel="stylesheet" href="_static/jinja.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Aura Dev documentation" href="index.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+    <link rel="prev" title="Architectural Philosophy" href="philosophy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="faq.html" title="Frequently Asked Questions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="philosophy.html" title="Architectural Philosophy"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Aura Dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="implementation">
+<h1>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="application-core">
+<h2>Application Core<a class="headerlink" href="#application-core" title="Permalink to this headline">¶</a></h2>
+<p>The Core has a number of responsibilities. Powered by the Mediator pattern,
+it:</p>
+<p><strong>Provides the ability to manage a widget&#8217;s lifecycle (start, stop, cleanup)</strong>.</p>
+<blockquote>
+<div>This is powered by work we&#8217;ve done to expand on top of RequireJS 2.0&#8217;s <cite>undef</cite>
+feature for unloading modules. Aura works around RequireJS&#8217;s limitation of
+not being able to resolve a module&#8217;s dependencies to allow the easy
+unloading of an entire widget. Unloading a widget equates to removing it
+from the RequireJS caches, deleting instance references to them (which can
+lower memory) and of course, cleaning up any DOM elements the widget was
+using.</div></blockquote>
+<p><strong>Implements aliases for DOM manipulation, templating and other lower-level utilities that pipe back to a library of choice</strong>.</p>
+<blockquote>
+<div><p>The idea here is that rather than interfacing with the libraries directly,
+accessing the Core aliases (through the Sandbox) allow developers to
+switch out the libraries they use at a later date with minimum impact to
+their application. We currently provide a bare-bones implementation of the
+jQuery library.</p>
+<p>The core uses AMD modules requiring dependencies to Aura&#8217;s facade,
+which abstracts DOM libraries like jQuery so they can be later
+switched out with a smaller or faster library in the future.</p>
+</div></blockquote>
+<p><strong>Exposes Publish/Subscribe functionality that can be used for decoupled communication between parts of an application</strong>.</p>
+<blockquote>
+<div>Similar to the concept above, our Pub/Sub implementation can be easily
+replaced with that of another library and it should still work fine.</div></blockquote>
+</div>
+<div class="section" id="sandbox">
+<h2>Sandbox<a class="headerlink" href="#sandbox" title="Permalink to this headline">¶</a></h2>
+<p>Powered by the Facade pattern, the Sandbox:</p>
+<p><strong>Provides a limited, lightweight API layer on top of the Core for the rest of an application to communicate through</strong>.</p>
+<blockquote>
+<div><p>Rather than exposing say, the entire API for a JavaScript library, we
+instead only expose those parts that developers in the project will
+need or are safe to use. This is particularly useful when working in
+teams.</p>
+<p>The Sandbox includes a permissions layer, allowing you to configure
+permissions for widgets such as whether a specific widget has the right
+to render to the page etc.</p>
+</div></blockquote>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p><strong>All of the files and demo widgets in Aura use AMD as their module format of choice</strong></p>
+<blockquote>
+<div><p>These can of course be used with r.js for compilation and optimization
+if concerned about too many script files (compilation should always be
+used for production-level apps if using AMD in any situation)</p>
+<p>Whilst not an Aura feature, we also take advantage of RequireJS 2.0&#8217;s
+<cite>shim</cite> capability to avoid the need to use patched versions of
+Backbone.js and Underscore.js (a concern with earlier versions of the
+project).</p>
+</div></blockquote>
+</div>
+<div class="section" id="widgets">
+<h2>Widgets<a class="headerlink" href="#widgets" title="Permalink to this headline">¶</a></h2>
+<p>A Widget represents a complete <em>unit</em> of a page. It could be a calendar,
+a news block, a todo list or anything else.</p>
+<p><strong>In Backbone.js terms, widgets are composed of Models, Views, Collections and Routers as well as any templates needed for the widget to be rendered.</strong></p>
+<blockquote>
+<div>Widgets should be developed such that any number of instances of them
+could exist on a page in harmony.</div></blockquote>
+<p><strong>Publish/Subscribe can be used to communicate between widgets</strong>.</p>
+<blockquote>
+<div>Alternatively, direct communication (as demonstrated by the <cite>controls</cite>
+widget in our examples) may be done, however this is discouraged where
+Pub/Sub can be used instead.</div></blockquote>
+</div>
+<div class="section" id="sample-application">
+<h2>Sample Application<a class="headerlink" href="#sample-application" title="Permalink to this headline">¶</a></h2>
+<p>A demo application using Aura is included in the download featuring
+Calendar, Todo list and control widgets. After you complete <strong>Install &amp;
+Build section</strong> (see below), run <cite>grunt</cite> to launch web server on
+<cite>http://localhost:8897</cite> and go to the <cite>src</cite> directory to try out the demo
+app.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><p class="logo"><a href="index.html">
+  <img class="logo" src="_static/aura-small.png" alt="Logo"/>
+</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Implementation</a><ul>
+<li><a class="reference internal" href="#application-core">Application Core</a></li>
+<li><a class="reference internal" href="#sandbox">Sandbox</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#widgets">Widgets</a></li>
+<li><a class="reference internal" href="#sample-application">Sample Application</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="philosophy.html" title="previous chapter">Architectural Philosophy</a></li>
+      <li>Next: <a href="faq.html" title="next chapter">Frequently Asked Questions</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/implementation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      <p>&copy; Copyright 2013, Addy Osmani.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>. Logo by <a href="http://hull.io">hull.io</a>.
+      </p>
+      <p>
+        <strong>Aura is the work of :</strong> Addy Osmani, Dustin Boston, Gerson Goulart, Tony Narlock, Sindre Sorhus, Peter Rudolfsen, Robert Djurasaj, Joel Hooks, Dan Lynch
+      </p>
+    </div>
+  </body>
+</html>
