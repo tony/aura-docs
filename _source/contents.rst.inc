@@ -6,6 +6,8 @@ Aura Documentation
 
    philosophy
    implementation
+   analyze_an_app
+   build_an_app
 
 Additional Information
 ----------------------
