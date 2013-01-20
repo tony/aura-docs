@@ -52,18 +52,38 @@
             
   <div class="section" id="implementation">
 <h1>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic">
-<li><dl class="first docutils">
-<dt>Abstraction - implemented using extensions, passable into apps</dt>
-<dd><ol class="first last loweralpha simple">
-<li>utilities (_, lodash)</li>
-<li>dom (jQuery, ender, etc)</li>
-<li>mvc (backbone, marionette)</li>
-</ol>
+<div class="section" id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<p>Originally coined <cite>backbone-aura</cite>, the code and API of aura has undergone
+many reiterations and has, at least in theory, became agnostic from
+backbone.</p>
+<p>In the first iterations of Aura, a single sandbox, or instance of the Aura
+app would control multiple widgets on a page. The widgets would inherit
+<cite>dom</cite>, an abstraction of jQuery / zepto by the facade and use the mediator
+as pubsub between widgets.</p>
+<dl class="docutils">
+<dt>The behavior has since been fundamentally changed. Today:</dt>
+<dd><ul class="first last simple">
+<li>before: aura termed <cite>sandbox</cite> as the instance of the aura app itself,
+now: every widget is a sandbox with its own context.</li>
+<li>before: aura extensibility was cloudy
+now: aura has a clear, concise and tested extension architecture</li>
+<li>permissions has been removed from core</li>
+<li><cite>EventEmitter2</cite> pubsub from hard coding</li>
+<li>bower for browser libraries</li>
+<li>jasmine -&gt; mocha unit test</li>
+<li>basic <a class="reference external" href="https://github.com/aurajs/aura/wiki/Coding-Standards">code standards</a>, <a class="reference external" href="https://github.com/aurajs/aura/blob/master/contributing.md">contribution guidelines</a>, etc.</li>
+</ul>
 </dd>
 </dl>
-</li>
-</ol>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Aura</p>
+<p><a class="reference external" href="https://github.com/hij1nx/EventEmitter2">EventEmitter2</a> is the default pubsub
+system. Permissions has been removed from core and will come back as an
+extension.</p>
+</div>
 <div class="section" id="application-core">
 <h2>Application Core<a class="headerlink" href="#application-core" title="Permalink to this headline">¶</a></h2>
 <p>The Core has a number of responsibilities. Powered by the Mediator pattern,
@@ -155,6 +175,8 @@ app.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Implementation</a><ul>
+<li><a class="reference internal" href="#history">History</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#application-core">Application Core</a></li>
 <li><a class="reference internal" href="#sandbox">Sandbox</a></li>
 <li><a class="reference internal" href="#modules">Modules</a></li>

@@ -5,19 +5,19 @@ Aura is a decoupled, event-driven framework for developing widget-based
 applications. As an architecture it takes advantage of patterns best
 practices for developing maintainable applications.
 
-The framework itself is constructed and tested with tools many front end
-developers find familiar. Aura has source code, a unit test suite and
-demos you may view.
+The framework itself is leverages libraries and patterns front end
+developer find familiar. Aura's source code is publicly available and
+is backed by headless and browser unit tests.
 
 Fresh front-end programmers can study the concepts of Aura and
 implementation of libraries to build applications and learn tools like
 AMD, grunt, unit tests in the process.
 
-Intermediate programmers can use the skills they already have with making
-AMD modules and apply the libraries of their choice.
+Intermediate programmers can hit the ground running utilizing experience
+already learned with requirejs and AMD spec modules and apply the
+libraries of their choice.
 
-You can see the latest developments at the `Aura Github Page`_ or jump
-right in and :doc:`build_an_app`.
+For a more technical overview, see :doc:`./implementation`.
 
 **Features:**
 
@@ -29,6 +29,14 @@ right in and :doc:`build_an_app`.
   dependencies and `Bower`_ for browser libraries.
 - unit tests in `Mocha`_ and `PhantomJS`_.
 - third-party support for `Yeoman`_.
+
+
+Demos and examples can be found via the Aura homepage or may be it locally
+by downloading the code.
+
+You can **catch the latest developments** at the `Aura Github Page`_ or
+**jump right in** and :doc:`build_an_app`.
+
 
 The project is based on concepts discussed by Nicholas Zakas in `Scalable
 Application Architecture`_ and by Addy in `Large-scale Application Development`_.

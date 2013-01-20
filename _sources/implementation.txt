@@ -2,11 +2,43 @@ Implementation
 ==============
 
 .. todo::
-1. Abstraction - implemented using extensions, passable into apps
-    a. utilities (_, lodash)
-    b. dom (jQuery, ender, etc)
-    c. mvc (backbone, marionette)
+    1. Abstraction - implemented using extensions, passable into apps
+        a. utilities (_, lodash)
+        b. dom (jQuery, ender, etc)
+        c. mvc (backbone, marionette)
 
+
+History
+-------
+
+Originally coined `backbone-aura`, the code and API of aura has undergone
+many reiterations and has, at least in theory, became agnostic from
+backbone.
+
+In the first iterations of Aura, a single sandbox, or instance of the Aura
+app would control multiple widgets on a page. The widgets would inherit
+`dom`, an abstraction of jQuery / zepto by the facade and use the mediator
+as pubsub between widgets.
+
+The behavior has since been fundamentally changed. Today:
+  - before: aura termed `sandbox` as the instance of the aura app itself,
+    now: every widget is a sandbox with its own context.
+  - before: aura extensibility was cloudy
+    now: aura has a clear, concise and tested extension architecture
+  - permissions has been removed from core
+  - `EventEmitter2` pubsub from hard coding
+  - bower for browser libraries
+  - jasmine -> mocha unit test
+  - basic `code standards`_, `contribution guidelines`_, etc.
+
+Overview
+--------
+
+Aura
+
+`EventEmitter2`_ is the default pubsub
+system. Permissions has been removed from core and will come back as an
+extension.
 
 Application Core
 ----------------
@@ -99,3 +131,7 @@ Calendar, Todo list and control widgets. After you complete **Install &
 Build section** (see below), run `grunt` to launch web server on
 `http://localhost:8897` and go to the `src` directory to try out the demo
 app.
+
+.. _EventEmitter2: https://github.com/hij1nx/EventEmitter2
+.. _code standards: https://github.com/aurajs/aura/wiki/Coding-Standards
+.. _contribution guidelines: https://github.com/aurajs/aura/blob/master/contributing.md
